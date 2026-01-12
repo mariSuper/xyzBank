@@ -6,8 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
+import pages.LoginPage;
+import pages.ManagerPage;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,19 +16,19 @@ public class CreateCustomerAccountsTest {
     public WebDriver driver;
 
     @Test
-
     public void automationTest() {
         driver = new ChromeDriver();
         driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        //button[@ng-click='addCust()']
-        WebElement bankManagerElement = driver.findElement(By.xpath("//button[@ng-click='manager()']"));
-        bankManagerElement.click();
+       //elementul meniu Bank Manager Login button[@ng-click='addCust()']
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginBankManager();
 
-        WebElement addCustomerElement = driver.findElement(By.xpath("//button[@ng-click='addCust()']"));
-        addCustomerElement.click();
+        //submeniul 'Add Customer' button[@ng-click='addCust()']
+        ManagerPage managerPage = new ManagerPage(driver);
+        managerPage.createCustomer();
 
         WebElement firstNameElement = driver.findElement(By.xpath("//input[@placeholder='First Name']"));
         String firstNameValue = "Irina";

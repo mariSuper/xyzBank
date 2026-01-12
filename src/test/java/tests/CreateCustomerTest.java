@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LoginPage;
+import pages.ManagerPage;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -20,13 +23,13 @@ public class CreateCustomerTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        //declaram elementul meniu Bank Manager Login
-        WebElement bankManagerElement = driver.findElement(By.xpath("//button[text()='Bank Manager Login']"));
-        bankManagerElement.click();
+        //elementul meniu Bank Manager Login button[@ng-click='addCust()']
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginBankManager();
 
-        //declaram si submeniul 'Add Customer'
-        WebElement addCustomerElement = driver.findElement(By.xpath("//button[@ng-click='addCust()']"));
-        addCustomerElement.click();
+        //submeniul 'Add Customer' button[@ng-click='addCust()']
+        ManagerPage managerPage = new ManagerPage(driver);
+        managerPage.createCustomer();
 
         WebElement firstNameElement = driver.findElement(By.xpath("//input[@placeholder='First Name']"));
         String firstNameValue = "Irina";

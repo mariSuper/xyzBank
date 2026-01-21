@@ -1,40 +1,48 @@
 package pages;
 
+import models.CustomerModel;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import java.util.List;
 
-public class CustomerPage {
-    public WebDriver driver;
+public class CustomerPage extends BasePage {
 
-    public CustomerPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
-    }
     @FindBy(xpath = "//input[@placeholder='First Name']")
-    public WebElement firstNameElement;
+    private WebElement firstNameElement;
 
     @FindBy(xpath = "//input[@placeholder='Last Name']")
-    public WebElement lastNameElement;
+    private WebElement lastNameElement;
 
     @FindBy(xpath = "//input[@placeholder='Post Code']")
-    public WebElement postCodeElement;
+    private WebElement postCodeElement;
 
     @FindBy(xpath = "//button[@type='submit']")
-    public WebElement submitCustomerElement;
+    private WebElement submitCustomerElement;
 
     @FindBy(xpath = "//button[@ng-click='openAccount()']")
-    public WebElement openAccountElement;
+    private WebElement openAccountElement;
 
-    public void createCustomerProcess(String firstNameValue, String lastNameValue, String postCodeValue){
-        firstNameElement.sendKeys(firstNameValue);
-        lastNameElement.sendKeys(lastNameValue);
-        postCodeElement.sendKeys(postCodeValue);
+    @FindBy(xpath = "//input[@placeholder='Search Customer']")
+    private WebElement searchCustomerElement;
+
+    @FindBy(xpath = "//tbody/tr")
+    private List<WebElement> tableRows;
+
+    @FindBy(xpath = "//button[@ng-click='deleteCust(cust)']")
+    private WebElement deletecustomerElement;
+
+    public CustomerPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public void createCustomerProcess(CustomerModel testData){
+        firstNameElement.sendKeys(testData.getFirstNameValue());
+        lastNameElement.sendKeys(testData.getLastNameValue());
+        postCodeElement.sendKeys(testData.getPostCodeValue());
         submitCustomerElement.click();
 
         Alert customerAlert = driver.switchTo().alert();
@@ -61,4 +69,20 @@ public class CustomerPage {
     public void openAccount(){
         openAccountElement.click();
     }
+    public void searchCustomer (CustomerModel testData){
+        searchCustomerElement.click();
+        searchCustomerElement.sendKeys(testData.getFirstNameValue());
+    }
+
+    public void validateCustomer (CustomerModel testData){
+        String customerTableRow = tableRows.get(0).getText();
+        Assert.assertTrue(customerTableRow.contains(testData.getFirstNameValue()));
+        Assert.assertTrue(customerTableRow.contains(testData.getLastNameValue()));
+        Assert.assertTrue(customerTableRow.contains(testData.getPostCodeValue()));
+        Assert.assertTrue(customerTableRow.contains(testData.getAccountNumber()));
+    }
+    public void deleteCustomer (){
+        deletecustomerElement.click();
+    }
+
 }

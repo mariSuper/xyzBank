@@ -8,21 +8,20 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import java.util.List;
 
-public class ValidCustomersPage {
-    public WebDriver driver;
+public class ValidCustomersPage extends BasePage {
 
-    public ValidCustomersPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
-    }
     @FindBy(xpath = "//input[@placeholder='Search Customer']")
-    public WebElement searchCustomerElement;
+    private WebElement searchCustomerElement;
 
     @FindBy(xpath = "//tbody/tr")
-    public List<WebElement> tableRows;
+    private List<WebElement> tableRows;
 
     @FindBy(xpath = "//button[@ng-click='deleteCust(cust)']")
-    public WebElement deletecustomerElement;
+    private WebElement deletecustomerElement;
+
+    public ValidCustomersPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void searchCustomer(String firstNameValue){
         searchCustomerElement.click();

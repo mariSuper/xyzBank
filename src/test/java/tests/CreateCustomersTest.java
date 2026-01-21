@@ -1,28 +1,20 @@
 package tests;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
+import models.CustomerModel;
 import org.testng.annotations.Test;
 import pages.CustomerPage;
 import pages.LoginPage;
 import pages.ManagerPage;
+import shareData.ShareData;
 
-import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
-public class CreateCustomersTest {
-    public WebDriver driver;
+public class CreateCustomersTest extends ShareData {
+//    CustomerModel testData = new CustomerModel("CustomerData.json");
 
     @Test
     public void automationTest() {
-        driver = new ChromeDriver();
-        driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        CustomerModel testData = new CustomerModel("CustomerData.json");
 
         //elementul meniu 'Bank Manager Login' button[@ng-click='addCust()']
         LoginPage loginPage = new LoginPage(driver);

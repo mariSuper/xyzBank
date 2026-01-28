@@ -14,7 +14,7 @@ public class CreateCustomersTest extends ShareData {
 
     @Test
     public void automationTest() {
-        CustomerModel testData = new CustomerModel("CustomerData.json");
+//        CustomerModel testData = new CustomerModel("CustomerData.json");
 
         //elementul meniu 'Bank Manager Login' button[@ng-click='addCust()']
         LoginPage loginPage = new LoginPage(driver);

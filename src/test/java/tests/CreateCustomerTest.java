@@ -25,6 +25,5 @@ public class CreateCustomerTest extends ShareData {
         AccountPage accountPage = new AccountPage(driver);
         accountPage.createAccountProcess(testData);
         accountPage.openCustomersPage();
-
     }
 }

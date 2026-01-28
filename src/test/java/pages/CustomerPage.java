@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import utils.LogUtility;
 
 import java.util.List;
 
@@ -41,14 +42,19 @@ public class CustomerPage extends BasePage {
 
     public void createCustomerProcess(CustomerModel testData){
         firstNameElement.sendKeys(testData.getFirstNameValue());
+        LogUtility.infoLog("The user fills first name field with value: " + testData.getFirstNameValue());
         lastNameElement.sendKeys(testData.getLastNameValue());
+        LogUtility.infoLog("The user fills last name field with value: " + testData.getLastNameValue());
         postCodeElement.sendKeys(testData.getPostCodeValue());
+        LogUtility.infoLog("The user fills post code field with value: " + testData.getPostCodeValue());
         submitCustomerElement.click();
+        LogUtility.infoLog("The user clicks on submit button ");
 
         Alert customerAlert = driver.switchTo().alert();
         String customerAlertText = customerAlert.getText();
         System.out.println(customerAlertText);
         customerAlert.accept();
+        LogUtility.infoLog("The user accepts the alerts with message: " + customerAlertText);
     }
     public void createCustomersProcess(List<String>firstNameValueList, List<String>lastNameValueList, List<String>postCodeValueList ){
         String fullName = " ";

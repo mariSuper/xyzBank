@@ -52,19 +52,19 @@ public class Exceptie {
 
     //keyword specific: throw
     public void throwExample() {
-        String path = "src/CustomerData.json";
-        File file = new File(path);
-        try {
-            FileInputStream fileContent = new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("Nu accept aceasta problema");
+//        String path = "src/CustomerData.json";
+//        File file = new File(path);
+//        try {
+//            FileInputStream fileContent = new FileInputStream(file);
+//        } catch (FileNotFoundException e) {
+//            throw new RuntimeException("Nu accept aceasta problema");
         }
     }
         //keyword specific: throws
-        public void throwsExample () {
-            String path = "src/CustomerData.json";
-            File file = new File(path);
-                  FileInputStream fileContent = new FileInputStream(file);
-        }
-    }
+//        public void throwsExample () {
+//            String path = "src/CustomerData.json";
+//            File file = new File(path);
+//                  FileInputStream fileContent = new FileInputStream(file);
+
+
 

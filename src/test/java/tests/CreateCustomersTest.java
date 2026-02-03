@@ -1,5 +1,4 @@
 package tests;
-import models.CustomerModel;
 import org.testng.annotations.Test;
 import pages.CustomerPage;
 import pages.LoginPage;

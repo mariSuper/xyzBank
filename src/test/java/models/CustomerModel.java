@@ -36,28 +36,22 @@ public class CustomerModel {
     }
 
     // getters & setters
-    public String getFirstNameValue() {
-        return firstNameValue;
+    public String getFirstNameValue() {return firstNameValue;
     }
 
-    public String getLastNameValue() {
-        return lastNameValue;
+    public String getLastNameValue() {return lastNameValue;
     }
 
-    public String getPostCodeValue() {
-        return postCodeValue;
+    public String getPostCodeValue() {return postCodeValue;
     }
 
-    public String getCurrencyValue() {
-        return currencyValue;
+    public String getCurrencyValue() {return currencyValue;
     }
 
-    public String getFullNameValue() {
-        return fullNameValue;
+    public String getFullNameValue() {return fullNameValue;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public String getAccountNumber() {return accountNumber;
     }
 
     public void setAccountNumber(String accountNumber) {

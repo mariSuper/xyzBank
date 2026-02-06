@@ -1,4 +1,5 @@
 package tests;
+
 import models.CustomerModel;
 import org.testng.annotations.Test;
 import pages.*;
@@ -8,6 +9,7 @@ public class CreateCustomerTest extends ShareData {
 
     @Test
     public void automationTest() {
+
         CustomerModel customer = new CustomerModel("CustomerData.json");
 
         //elementul meniu 'Bank Manager Login'   button[@ng-click='addCust()']

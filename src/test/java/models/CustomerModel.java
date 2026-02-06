@@ -2,15 +2,13 @@ package models;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.File;
-import java.io.IOException;
-
 public class CustomerModel {
     private String firstNameValue;
     private String lastNameValue;
     private String postCodeValue;
     private String currencyValue;
     private String fullNameValue;
+    private String accountNumber;
 
     // incarca acel fisier
     // citeste datele din el
@@ -18,21 +16,25 @@ public class CustomerModel {
     // si valorile pe care le-am extras
     // trebuie sa le dau ca parametrii mai jos
 
-    public CustomerModel(String filePath){
-        loadFromJson(filePath);
+    public CustomerModel(String fileName) {
+        loadFromJson(fileName);
     }
 
-    public void loadFromJson(String filePath)  {
+    public void loadFromJson(String fileName) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.readerForUpdating(this)
-                    .readValue(new File(filePath));
-        } catch (IOException e) {
+                    .readValue(
+                            getClass()
+                                    .getClassLoader()
+                                    .getResourceAsStream(fileName)
+                    );
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private String accountNumber;
+    // getters & setters
 
     public String getAccountNumber() {
         return accountNumber;

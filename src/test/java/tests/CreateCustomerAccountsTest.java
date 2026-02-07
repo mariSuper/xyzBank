@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CreateCustomerAccountsTest extends ShareData {
 
-    @Test
+    @Test(groups = {SuiteType.REGRESSION_SUITE, SuiteType.ACCOUNT_SUITE})
     public void automationTest() {
 
           //elementul meniu Bank Manager Login button[@ng-click='addCust()']

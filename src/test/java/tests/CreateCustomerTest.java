@@ -7,7 +7,7 @@ import shareData.ShareData;
 
 public class CreateCustomerTest extends ShareData {
 
-    @Test
+    @Test(groups = {SuiteType.REGRESSION_SUITE, SuiteType.CUSTOMER_SUITE, SuiteType.ACCOUNT_SUITE})
     public void automationTest() {
 
         CustomerModel customer = new CustomerModel("CustomerData.json");

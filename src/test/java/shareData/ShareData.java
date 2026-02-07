@@ -14,12 +14,13 @@ public class ShareData {
     private String testName;
 
     // fac un mecanism care sa deschida browserul
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void prepareEnvironment(){
         testName = this.getClass().getSimpleName();
         // headless
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless=new");
+        options.addArguments("--window-size=1920,1080");
 
         driver = new ChromeDriver(options);
         driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
@@ -28,7 +29,7 @@ public class ShareData {
         LogUtility.startTest(testName);
     }
     // fac un mecanism care sa inchida browserul
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void clearEnvironment(){
         driver.quit();
         LogUtility.finishTest(testName);

@@ -11,7 +11,7 @@ import java.util.List;
 public class CreateCustomersTest extends ShareData {
 //    CustomerModel testData = new CustomerModel("CustomerData.json");
 
-    @Test
+    @Test(groups = {SuiteType.REGRESSION_SUITE, SuiteType.CUSTOMER_SUITE})
     public void automationTest() {
 //        CustomerModel testData = new CustomerModel("CustomerData.json");
 

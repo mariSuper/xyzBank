@@ -13,7 +13,7 @@ on:
     inputs:
 
       suiteName:
-        description: "Please specify the suite name(@SmokeSuite, @SanitySuite, @RegressionSuite)"
+        description: "Please specify the suite name(@SmokeSuite, @RegressionSuite, @CustomerSuite)"
         required: true
         default: "@SmokeSuite"
 jobs:
@@ -30,6 +30,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Run automation test
-      run: mvn clean install
+      run: mvn clean install -Dgroups=${{github.event.inputs.suiteName}}
 
     

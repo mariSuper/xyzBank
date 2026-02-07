@@ -8,7 +8,7 @@ import utils.LogUtility;
 public class LoginPage extends BasePage {
     public WebDriver driver;
 
-    @FindBy(xpath = "//button[text()='Bank Manager Login']")
+    @FindBy(xpath = "//button[contains(text(),'Bank Manager')]")
     private WebElement bankManagerElement;
 
     public LoginPage(WebDriver driver) {
